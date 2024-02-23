@@ -1,8 +1,19 @@
-
+import Header from '../Header'
+import Footer from '../Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from '../HomePage'
 
 function App() {
 	return (
-		<div className="App">
+		<div>
+
+			<BrowserRouter>
+				<Header />
+				<Routes>
+					<Route path='/' element={<HomePage />} />
+				</Routes>
+				<Footer />
+			</BrowserRouter>
 
 		</div>
 	);
