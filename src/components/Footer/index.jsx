@@ -26,9 +26,9 @@ const Footer = () => {
 							<ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
 								{footerNavs.map((item, idx) => (
 									<div key={idx} className="text-gray-800 hover:text-gray-500 duration-150">
-										<a href={item.href}>
+										<button type="button">
 											{item.name}
-										</a>
+										</button>
 									</div>
 								))}
 							</ul>
@@ -38,7 +38,7 @@ const Footer = () => {
 								Скачать наше приложение
 							</p>
 							<div className="flex items-center gap-3 mt-3 sm:block">
-								<a>
+								<button type="button">
 									<svg className="w-32" fill="none" viewBox="0 0 338 100">
 										<path
 											fill="#000"
@@ -309,8 +309,8 @@ const Footer = () => {
 											</linearGradient>
 										</defs>
 									</svg>
-								</a>
-								<a className="mt-0 block sm:mt-3">
+								</button>
+								<button type="button" className="mt-0 block sm:mt-3">
 									<svg className="w-32" fill="none" viewBox="0 0 300 100">
 										<g clipPath="url(#clip0_3_178097)">
 											<path
@@ -336,7 +336,7 @@ const Footer = () => {
 											</clipPath>
 										</defs>
 									</svg>
-								</a>
+								</button>
 							</div>
 						</div>
 					</div>
