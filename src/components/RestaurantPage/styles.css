@@ -1,0 +1,19 @@
+.background-main2 {
+  background: url("/src/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+@media (max-width: 640px) {
+  .my-72 {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+  }
+}
+
+@media (max-width: 300px) {
+  .background-main2 {
+    background-size: contain !important;
+  }
+}
