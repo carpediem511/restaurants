@@ -4,12 +4,12 @@ import ChooseRestaurant from './ChooseRestaurant'
 import Reviews from './Reviews'
 import BanquetForm from './BanquetForm'
 
-const HomePage = () => {
+const HomePage = ({ restaurants }) => {
 	return (
 		<>
 			<HeroSection />
 			<AboutUs />
-			<ChooseRestaurant />
+			<ChooseRestaurant restaurants={restaurants} />
 			<Reviews />
 			<BanquetForm />
 		</>
