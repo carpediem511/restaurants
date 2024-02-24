@@ -8,34 +8,10 @@ import {
 import format from "date-fns/format";
 import enUS from "date-fns/locale/en-US";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { FlapperSpinner } from "react-spinners-kit";
 import './styles.css'
 
-const DescriptionRestaurant = () => {
-
-	const [restaurant, setRestaurant] = useState({})
-	const [loading, setLoading] = useState(true)
-
-	const { slug } = useParams();
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLoading(false);
-		}, 1000);
-
-		return () => clearTimeout(timer);
-	}, []);
-
-	useEffect(() => {
-		fetch(`https://www.bit-by-bit.ru/api/student-projects/restaurants/${slug}`)
-			.then((response) => response.json())
-			.then(
-				(result) => {
-					setRestaurant(result);
-				},
-			);
-	}, [slug]);
+const DescriptionRestaurant = ({ restaurant, loading, setLoading }) => {
 
 	return (
 		<>

@@ -1,11 +1,27 @@
 import DescriptionRestaurant from "./DescriptionRestaurant"
 import { Link } from "react-router-dom"
 import Menu from "./Menu"
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const RestaurantPage = ({ restaurants }) => {
+const RestaurantPage = ({ restaurants, loading, setLoading }) => {
+
+	const [restaurant, setRestaurant] = useState({})
+	const { slug } = useParams();
+
+	useEffect(() => {
+		fetch(`https://www.bit-by-bit.ru/api/student-projects/restaurants/${slug}`)
+			.then((response) => response.json())
+			.then(
+				(result) => {
+					setRestaurant(result);
+				},
+			);
+	}, [slug]);
+
 	return (
 		<>
-			<DescriptionRestaurant restaurants={restaurants} />
+			<DescriptionRestaurant restaurant={restaurant} loading={loading} setLoading={setLoading} />
 			<div className="max-w-md mx-auto lg:max-w-5xl">
 				<p className="text-4xl text-gray-800 font-semibold text-center my-10 sm:mt-28">
 					Выбрать блюда:
@@ -18,7 +34,7 @@ const RestaurantPage = ({ restaurants }) => {
 					Перейти в корзину
 				</Link>
 			</div>
-			<Menu />
+			<Menu restaurant={restaurant} loading={loading} setLoading={setLoading} />
 		</>
 	)
 }
