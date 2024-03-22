@@ -3,14 +3,14 @@ import { useParams } from "react-router";
 import { FlapperSpinner } from "react-spinners-kit";
 import Count from '../Count'
 import { PlusIcon } from "@heroicons/react/24/solid";
-import { Dialog } from '@headlessui/react';
+import OtherRestaurantMessage from "../ModalWindows/OtherRestaurantMessage";
+
 
 const Menu = ({ restaurant, loading, setLoading }) => {
 
 	const { slug } = useParams();
 	const [dishes, setDishes] = useState([]);
-	const [cartItems, setCartItems] = useState([]);
-	const [selectedDishes, setSelectedDishes] = useState([]);
+	const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || [])  // массив блюд, добавленных в корзину
 	const [showConfirmation, setShowConfirmation] = useState(false);
 	const [newCartItem, setNewCartItem] = useState(null);
 
@@ -35,59 +35,36 @@ const Menu = ({ restaurant, loading, setLoading }) => {
 			restaurant: restaurant.name
 		}
 
-		const differentRes = cartItems.map((item) => item.restaurant);
-		if (differentRes.includes(newItem.restaurant)) {
-			setCartItems([...cartItems, newItem]);
+		// Проверяем, есть ли уже товары в корзине
+		if (cartItems.length === 0) {
+			setCartItems([newItem]); // Если корзина пуста, просто добавляем новый элемент
 		} else {
-			setShowConfirmation(true);
-			setNewCartItem(newItem);
+			// Проверяем, есть ли в корзине товары из других ресторанов
+			const differentRes = cartItems.map((item) => item.restaurant);
+			if (differentRes.includes(newItem.restaurant)) {
+				// Если товары из текущего ресторана уже есть в корзине, добавляем новый элемент
+				setCartItems([...cartItems, newItem]);
+			} else {
+				// Если в корзине есть товары из других ресторанов, показываем уведомление
+				setShowConfirmation(true);
+				setNewCartItem(newItem);
+			}
 		}
 	}
 
 	const confirmAddToCart = () => {
 		setShowConfirmation(false);
-		setCartItems([newCartItem]);
+		setCartItems([newCartItem]); // Очищаем корзину и добавляем новый элемент
 	};
 
 	const cancelAddToCart = () => {
 		setShowConfirmation(false);
+		// Пользователь отменил добавление нового элемента, поэтому не нужно ничего делать
 	};
 
 	return (
 		<>
-			<Dialog open={showConfirmation} onClose={cancelAddToCart}>
-				<Dialog.Panel className="w-full fixed inset-0 h-max m-auto max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-					<Dialog.Title
-						as="h3"
-						className="text-2xl font-medium leading-6 text-red-900"
-					>
-						Подтвердите действие
-					</Dialog.Title>
-					<div className="mt-2">
-						<p className="text-lg text-red-500">
-							Вы пытаетесь добавить товар из другого ресторана! Текущие блюда в корзине будут удалены! Хотите продолжить?
-						</p>
-					</div>
-
-					<div className="bg-white rounded-lg overflow-hidden max-w-md p-6">
-						<div className="mt-4 flex justify-center">
-							<button
-								onClick={confirmAddToCart}
-								className="inline-flex justify-center rounded-md border border-transparent bg-teal-100 px-4 py-2 text-lg font-medium text-teal-900 hover:bg-teal-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
-							>
-								Да
-							</button>
-							<button
-								onClick={cancelAddToCart}
-								className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-lg font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 ml-4"
-							>
-								Нет
-							</button>
-						</div>
-					</div>
-				</Dialog.Panel>
-			</Dialog>
-
+			{showConfirmation && <OtherRestaurantMessage showConfirmation={showConfirmation} cancelAddToCart={cancelAddToCart} confirmAddToCart={confirmAddToCart} />}
 			<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 				<div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"></div>
 				{loading ? (
