@@ -4,7 +4,7 @@ import Menu from "./Menu"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const RestaurantPage = ({ restaurants, loading, setLoading }) => {
+const RestaurantPage = ({ loading, setLoading }) => {
 
 	const [restaurant, setRestaurant] = useState({})
 	const { slug } = useParams();

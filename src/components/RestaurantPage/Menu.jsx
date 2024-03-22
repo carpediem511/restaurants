@@ -6,7 +6,7 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import OtherRestaurantMessage from "../ModalWindows/OtherRestaurantMessage";
 
 
-const Menu = ({ restaurant, loading, setLoading }) => {
+const Menu = ({ restaurant, loading }) => {
 
 	const { slug } = useParams();
 	const [dishes, setDishes] = useState([]);
@@ -59,7 +59,6 @@ const Menu = ({ restaurant, loading, setLoading }) => {
 
 	const cancelAddToCart = () => {
 		setShowConfirmation(false);
-		// Пользователь отменил добавление нового элемента, поэтому не нужно ничего делать
 	};
 
 	return (
@@ -112,8 +111,8 @@ const Menu = ({ restaurant, loading, setLoading }) => {
 												addToCart(
 													dish.id,
 													dish.name,
-													dish.image,
 													dish.description,
+													dish.image,
 													dish.price
 												)
 											}

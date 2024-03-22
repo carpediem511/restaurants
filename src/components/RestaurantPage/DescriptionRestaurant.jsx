@@ -7,11 +7,10 @@ import {
 } from "@heroicons/react/24/solid";
 import format from "date-fns/format";
 import enUS from "date-fns/locale/en-US";
-import { useState, useEffect } from "react";
 import { FlapperSpinner } from "react-spinners-kit";
 import './styles.css'
 
-const DescriptionRestaurant = ({ restaurant, loading, setLoading }) => {
+const DescriptionRestaurant = ({ restaurant, loading }) => {
 
 	return (
 		<>

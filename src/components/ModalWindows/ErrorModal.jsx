@@ -39,7 +39,6 @@ const ErrorModal = ({ onClose, isOpen }) => {
 									<div className="mt-2">
 										<p className="text-lg text-red-500">
 											Пожалуйста, проверьте - корректно ли заполнены поля формы.
-
 										</p>
 									</div>
 
@@ -57,7 +56,6 @@ const ErrorModal = ({ onClose, isOpen }) => {
 					</div>
 				</Dialog>
 			</Transition>
-
 		</>
 	)
 }

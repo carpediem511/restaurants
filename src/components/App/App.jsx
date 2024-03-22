@@ -5,6 +5,7 @@ import HomePage from '../HomePage'
 import { useEffect, useState } from 'react';
 import RestaurantPage from '../RestaurantPage';
 import { FlapperSpinner } from "react-spinners-kit";
+import CartBody from '../Cart';
 
 function App() {
 
@@ -39,12 +40,12 @@ function App() {
 					<Routes>
 						<Route path='/' element={<HomePage restaurants={restaurants} />} />
 						<Route path="/restaurant/:slug" element={<RestaurantPage restaurants={restaurants} loading={loading} setLoading={setLoading} />} />
+						<Route path='/cart' element={<CartBody />} />
 					</Routes>
 					<Footer />
 				</BrowserRouter>
 			)}
 		</div>
-
 	)
 }
 

@@ -35,7 +35,6 @@ const OtherRestaurantMessage = ({ showConfirmation, cancelAddToCart, confirmAddT
 					</div>
 				</Dialog.Panel>
 			</Dialog>
-
 		</>
 	)
 }

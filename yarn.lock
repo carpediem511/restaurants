@@ -1331,10 +1331,10 @@
     "@tanstack/react-virtual" "^3.0.0-beta.60"
     client-only "^0.0.1"
 
-"@heroicons/react@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.1.1.tgz#422deb80c4d6caf3371aec6f4bee8361a354dc13"
-  integrity sha512-JyyN9Lo66kirbCMuMMRPtJxtKJoIsXKS569ebHGGRKbl8s4CtUfLnyKJxteA+vIKySocO4s1SkTkGS4xtG/yEA==
+"@heroicons/react@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.1.2.tgz#9b528e8546ec21d0ac1d6554d403836d8d53db6f"
+  integrity sha512-tjNtOBRYEd7zCQLi6fFfcCm1L+62a+qu0hMlcRAyF0zV1os8ftenH7TVmUsR/x4yavGB8sOK/b/ojbMqI5DTFA==
 
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.14"
@@ -8726,6 +8726,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.10.7:
+  version "11.10.7"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.10.7.tgz#db2b8ce486f590404c761e051c7e40c80d648fae"
+  integrity sha512-5Jlzrmaitay6KzU+2+LhYu9q+L4v/dZ8oZyEDH14ep0C/QilCnFLHmqAyD/Lhq/lm5DiwsOs6Tr58iv8k3wyGg==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
